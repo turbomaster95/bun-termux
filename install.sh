@@ -144,11 +144,9 @@ fish)
 
     fish_config=$HOME/.config/fish/config.fish
     tilde_fish_config=$(tildify "$fish_config")
-    cat << EOF >> $fish_config
-    if [ -f $HOME/.config/fish/alias.fish ]
-       source $HOME/.config/fish/alias.fish
-    end
-    EOF
+    echo "if [ -f $HOME/.config/fish/alias.fish ]" >> $fish_config
+    echo "source $HOME/.config/fish/alias.fish" >> $fish_config
+    echo "end" >> $fish_config
     info "Installing Final Packages..."
     pkg install glibc-repo -y
     pkg install glibc-runner -y
